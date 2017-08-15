@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+#qtcreator
+*.user
+*.workspace
+
+#ROS
+build/
+devel/
+
