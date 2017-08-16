@@ -5,8 +5,8 @@ bb_serial::bb_serial(ros::NodeHandle& nh, const ros::NodeHandle& nh_p)
   , nh_p_(nh_p) {
     max_vel_ = nh_p_.param<float>("max_velocity", 10.4719755f);
 
-    ios = std::make_shared<boost::asio::io_service>();
-    sp_ = std::make_shared<boost::asio::serial_port>(*ios, "/dev/ttyUSB0");
+    ios_ = std::make_shared<boost::asio::io_service>();
+    sp_  = std::make_shared<boost::asio::serial_port>(*ios_, "/dev/ttyUSB0");
     sp_->set_option(boost::asio::serial_port::baud_rate(9600));
 
     // pub_left_motor_ =
@@ -21,7 +21,7 @@ bb_serial::~bb_serial() {
 }
 
 void bb_serial::motorCb(const std_msgs::Float32::ConstPtr& msg, int offset) {
-    uint8_t cmd_to_send = computeSpeed(msg->data);
+    uint8_t cmd_to_send = computeSpeed(msg->data, offset);
 
     sp_->write_some(boost::asio::buffer(&cmd_to_send, sizeof(cmd_to_send)));
 }

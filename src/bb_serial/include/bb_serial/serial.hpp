@@ -26,7 +26,7 @@ class bb_serial {
     ros::NodeHandle nh_;
     ros::NodeHandle nh_p_;
 
-    std::shared_ptr<boost::asio::io_service>  ios;
+    std::shared_ptr<boost::asio::io_service>  ios_;
     std::shared_ptr<boost::asio::serial_port> sp_;
 
     ros::Subscriber pub_left_motor_;
