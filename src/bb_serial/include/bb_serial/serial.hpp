@@ -21,6 +21,12 @@ class bb_serial {
      */
     void motorCb(const std_msgs::Float32::ConstPtr& msg, int offset);
 
+    /**
+     * @brief computeSpeed, from rad/sec conpute to % motor speed to send to sabertooth
+     * @param speed
+     * @param offset
+     * @return
+     */
     uint8_t computeSpeed(float speed, int offset = 0) const;
 
     ros::NodeHandle nh_;

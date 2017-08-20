@@ -9,9 +9,10 @@ bb_serial::bb_serial(ros::NodeHandle& nh, const ros::NodeHandle& nh_p)
     sp_  = std::make_shared<boost::asio::serial_port>(*ios_, "/dev/ttyUSB0");
     sp_->set_option(boost::asio::serial_port::baud_rate(9600));
 
-    // pub_left_motor_ =
-    nh_.subscribe<std_msgs::Float32>("hw/left_motor/command", 1, boost::bind(&bb_serial::motorCb, this, _1, 0));
-    nh_.subscribe<std_msgs::Float32>("hw/left_motor/command", 1, boost::bind(&bb_serial::motorCb, this, _1, 127));
+    pub_left_motor_ =
+        nh_.subscribe<std_msgs::Float32>("hw/left_motor/command", 1, boost::bind(&bb_serial::motorCb, this, _1, 0));
+    pub_right_motor_ =
+        nh_.subscribe<std_msgs::Float32>("hw/left_motor/command", 1, boost::bind(&bb_serial::motorCb, this, _1, 127));
 }
 
 bb_serial::~bb_serial() {
