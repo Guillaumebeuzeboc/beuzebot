@@ -5,7 +5,11 @@ int main(int argc, char** argv) {
     ros::NodeHandle nh;
     ros::NodeHandle nh_p("~");
 
-    bb_serial serial_com(nh, nh_p);
+    try {
+        bb_serial serial_com(nh, nh_p);
+    } catch (...) {
+        return 0;
+    }
 
     //    int frequency = 10;
     //    nh_p.param<int>("frequency", frequency, frequency);
