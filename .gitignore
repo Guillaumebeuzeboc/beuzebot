@@ -39,4 +39,5 @@
 #ROS
 build/
 devel/
+install/
 
