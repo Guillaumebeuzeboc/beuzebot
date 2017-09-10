@@ -22,7 +22,7 @@ bb_serial::bb_serial(ros::NodeHandle& nh, const ros::NodeHandle& nh_p)
     pub_left_motor_ =
         nh_.subscribe<std_msgs::Float32>("hw/left_motor/command", 1, boost::bind(&bb_serial::motorCb, this, _1, 0));
     pub_right_motor_ =
-        nh_.subscribe<std_msgs::Float32>("hw/left_motor/command", 1, boost::bind(&bb_serial::motorCb, this, _1, 127));
+        nh_.subscribe<std_msgs::Float32>("hw/right_motor/command", 1, boost::bind(&bb_serial::motorCb, this, _1, 127));
 }
 
 bb_serial::~bb_serial() {
