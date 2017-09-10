@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(bb_serial)
 
-add_compile_options(-std=c++11)
+#add_compile_options(-std=c++11)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
@@ -9,6 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 #find_package(Boost REQUIRED COMPONENTS system)
+set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
 
 catkin_package(
   INCLUDE_DIRS include
