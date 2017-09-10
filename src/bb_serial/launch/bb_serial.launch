@@ -1,0 +1,5 @@
+<launch>
+  <node name="bb_serial_node" pkg="bb_serial" type="bb_serial_node">
+    <rosparam command="load" file="$(find bb_serial)/config/bb_serial.yaml" />
+  </node>
+</launch>
