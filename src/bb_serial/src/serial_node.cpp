@@ -4,22 +4,14 @@ int main(int argc, char** argv) {
     ros::init(argc, argv, "bb_serial");
     ros::NodeHandle nh;
     ros::NodeHandle nh_p("~");
-
+    
+    std::shared_ptr<bb_serial> serial_com;
     try {
-        bb_serial serial_com(nh, nh_p);
+        serial_com = std::make_shared<bb_serial>(nh, nh_p);
     } catch (...) {
         return 0;
     }
 
-    //    int frequency = 10;
-    //    nh_p.param<int>("frequency", frequency, frequency);
-
-    //    ros::Rate rate(frequency);
-
-    //    while (ros::ok()) {
-    //        ros::spinOnce();
-    //        rate.sleep();
-    //    }
     ros::spin();
 
     return 0;
