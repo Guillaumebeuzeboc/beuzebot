@@ -11,7 +11,12 @@ class bb_encoder {
        * @param gpioA
        * @param gpioB
        */
-    bb_encoder(ros::NodeHandle& nh, ros::NodeHandle nh_p, int gpioA, int gpioB);
+    bb_encoder(ros::NodeHandle&   nh,
+               ros::NodeHandle    nh_p,
+               int                gpioA,
+               int                gpioB,
+               const float&       reduction_ratio,
+               const std::string& side);
 
     ~bb_encoder();
 
@@ -27,13 +32,14 @@ class bb_encoder {
 
     ros::NodeHandle nh_;
     ros::NodeHandle nh_p_;
-    ros::Publisher  pub_pos_left_;
+    ros::Publisher  pub_pos_;
     int             gpioA_;
     int             gpioB_;
     int             levA_;
     int             levB_;
     int             lastGpio_;
     int             pos_;
+    float           reduction_ratio_;
 };
 
 #endif  // ENCODER_HPP
