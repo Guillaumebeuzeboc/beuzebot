@@ -1,0 +1,5 @@
+<launch>
+  <node name="bb_pigpio_node" pkg="bb_pigpio" type="bb_pigpio_node">
+    <rosparam command="load" file="$(find bb_pigpio)/config/bb_encoder.yaml" />
+  </node>
+</launch>
