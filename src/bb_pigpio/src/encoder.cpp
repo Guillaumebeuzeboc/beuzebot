@@ -53,7 +53,7 @@ bb_encoder::bb_encoder(ros::NodeHandle&   nh,
     gpioSetAlertFuncEx(gpioA_, _pulseEx, this);
     gpioSetAlertFuncEx(gpioB_, _pulseEx, this);
 
-    pub_pos_ = nh.advertise<std_msgs::Float32>("pos_" + side + "_encoder", 1);
+    pub_pos_ = nh.advertise<std_msgs::Float32>("/hw/" + side + "_encoder/position", 1);
 }
 
 bb_encoder::~bb_encoder() {
