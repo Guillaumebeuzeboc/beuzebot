@@ -5,4 +5,4 @@ language: generic
 before_install:
   - docker pull ros:indigo-ros-core
   - make
-  - docker run guillaumebeuzeboc/beuzebot /bin/sh -c "source /opt/ros/indigo/setup.bash; cd /root/ws; catkin_make"
+  - make build_code
