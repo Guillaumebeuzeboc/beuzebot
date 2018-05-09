@@ -1,0 +1,15 @@
+<launch>
+
+  <!-- encoder of motors -->
+  <include file="$(find bb_pigpio)/launch/bb_encoder.launch" />
+
+  <!-- control the motors -->
+  <include file="$(find bb_serial)/launch/bb_serial.launch" />
+
+  <!-- robot description -->
+  <include file="$(find bb_description)/launch/robot.launch" />
+
+  <!-- robot control -->
+  <include file="$(find bb_control)/launch/control.launch" />
+
+</launch>
