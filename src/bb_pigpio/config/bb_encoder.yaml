@@ -2,4 +2,4 @@ gpio_left_A: 5
 gpio_left_B: 6
 gpio_right_A: 13
 gpio_right_B: 19
-reduction_ratio: 519.8
+reduction_ratio: -260
