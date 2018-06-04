@@ -1,7 +1,11 @@
 <launch>
-    <node pkg="joy" type="joy_node" name="joy_node">
-        <param name="autorepeat_rate" value="100"/>
-        <param name="deadzone" value="0.2"/>
+    <node pkg="teleop_twist_joy" type="teleop_node" name="teleop_twist_node">
+        <remap from="/cmd_vel" to="/mobile_base_controller/cmd_vel"/>
     </node>
 
+    <node pkg="joy" type="joy_node" name="joy_node"/>
+
+    <!-- configuration -->
+
+    <rosparam command="load" file="$(find bb_bringup)/config/joystick.yaml" />
 </launch>
