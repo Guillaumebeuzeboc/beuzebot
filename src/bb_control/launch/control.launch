@@ -1,0 +1,14 @@
+<launch>
+
+  <!-- Load hardware interface -->
+  <node name="bb_hardware_interface" pkg="bb_control" type="bb_hw_main">
+      <remap from="/joint_states" to="/joint_states_hw" />
+  </node>
+
+  <!-- Load controller manager -->
+  <node name="ros_control_controller_manager" pkg="controller_manager" type="spawner" respawn="false" args="--shutdown-timeout 1 --wait-for /controller/ready joint_state_controller mobile_base_controller" />
+
+  <!-- Load controller settings -->
+  <rosparam file="$(find bb_control)/config/controllers.yaml" command="load" />
+
+</launch>

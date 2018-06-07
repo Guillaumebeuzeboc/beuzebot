@@ -1,0 +1,8 @@
+teleop_twist_node:
+    axis_angular: 2
+    scale_angular: 4
+    enable_button: 4
+
+joy_node:
+    autorepeat_rate: 100
+    deadzone: 0.2
