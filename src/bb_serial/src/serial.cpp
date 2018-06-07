@@ -32,7 +32,7 @@ bb_serial::~bb_serial() {
 }
 
 void bb_serial::motorCb(const std_msgs::Float32::ConstPtr& msg, int offset) {
-    uint8_t cmd_to_send = computeSpeed(msg->data, offset);
+    uint8_t cmd_to_send = computeSpeed(-msg->data, offset);
 
     sp_->write_some(boost::asio::buffer(&cmd_to_send, sizeof(cmd_to_send)));
 }
