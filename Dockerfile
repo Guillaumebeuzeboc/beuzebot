@@ -30,7 +30,7 @@ RUN cd /tmp/PIGPIO; make; make install
 #depends ws
 RUN mkdir -p /root/ros_depends/src
 RUN git clone --branch 0.4.1 https://github.com/Guillaumebeuzeboc/ros_control_boilerplate.git /root/ros_depends/src/ros_control_boilerplate
-RUN /bin/bash -c "source /opt/ros/kinetic/setup.bash; cd /root/ros_depends; catkin_make install"
+RUN /bin/bash -c "source /opt/ros/kinetic/setup.bash; cd /root/ros_depends; catkin_make install -j1 -DCMAKE_BUILD_TYPE=Release"
 
 #install ws
 RUN mkdir -p /root/ws/src
