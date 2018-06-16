@@ -1,8 +1,9 @@
 #include "bb_pigpio/encoder.hpp"
+#include "bb_pigpio/shutdown_callback.hpp"
 #include <pigpio.h>
 
 int main(int argc, char** argv) {
-    ros::init(argc, argv, "bb_encoder");
+    ros::init(argc, argv, "bb_encoder", ros::init_options::NoSigintHandler);
     ros::NodeHandle nh;
     ros::NodeHandle nh_p("~");
 
@@ -19,13 +20,23 @@ int main(int argc, char** argv) {
     bb_encoder encoder_left(nh, nh_p, gpio_left_A, gpio_left_B, reduction_ratio_left, "left");
     bb_encoder encoder_right(nh, nh_p, gpio_right_A, gpio_right_B, reduction_ratio_right, "right");
 
+    // Override the default ros sigint handler
+    signal(SIGINT, mySigIntHandler);
+
+    // Override XMLRPC shutdown
+    ros::XMLRPCManager::instance()->unbind("shutdown");
+    ros::XMLRPCManager::instance()->unbind("shutdown");
+
     ros::Rate rate(10);
-    while (ros::ok()) {
+    while (!g_request_shutdown) {
         ros::spinOnce();
         encoder_left.update();
         encoder_right.update();
         rate.sleep();
     }
     gpioTerminate();
+
+    ros::shutdown();
+
     return 0;
 }
