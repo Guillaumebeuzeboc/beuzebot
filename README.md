@@ -5,6 +5,8 @@ code for the beuzebot robot, my homemade robot.
 The code is supposed to run on a raspberry pi
 
 ![Alt Text](https://j.gifs.com/nrADYR.gif)
+<br/><br/>
+[video](https://www.youtube.com/watch?v=9LQwTk_9KYU)
 
 Hardware description
 ------
