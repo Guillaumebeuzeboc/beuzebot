@@ -4,6 +4,8 @@ code for the beuzebot robot, my homemade robot.
 
 The code is supposed to run on a raspberry pi
 
+![Alt Text](https://j.gifs.com/nrADYR.gif)
+
 Hardware description
 ------
 
