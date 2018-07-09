@@ -40,9 +40,16 @@ include_directories(
 add_executable(${PROJECT_NAME}_node src/encoder_node.cpp
                                     src/encoder.cpp)
 
+add_executable(${PROJECT_NAME}_killer_node src/encoder_node_killer.cpp)
+
 add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(${PROJECT_NAME}_killer_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 target_link_libraries(${PROJECT_NAME}_node
+  ${catkin_LIBRARIES}
+  pigpio
+)
+target_link_libraries(${PROJECT_NAME}_killer_node
   ${catkin_LIBRARIES}
   pigpio
 )
