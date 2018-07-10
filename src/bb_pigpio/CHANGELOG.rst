@@ -2,8 +2,8 @@
 Changelog for package bb_pigpio
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.0 (2018-07-11)
+------------------
 * feat(bb_pigpio): add pigpio killer
   pigpio killer is responsible of killing
   the node that is started as root

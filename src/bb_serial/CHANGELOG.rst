@@ -2,8 +2,8 @@
 Changelog for package bb_serial
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.0 (2018-07-11)
+------------------
 * doc(bb_serial): set BSD license
 * feat(install): add install instruction
 * feat(bb_serial): read serial port from yaml
