@@ -40,4 +40,5 @@
 build/
 devel/
 install/
+.vscode/
 
