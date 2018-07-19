@@ -2,6 +2,11 @@
 Changelog for package bb_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* feat(bb_bringup): add install instructions
+* Contributors: Guillaume Beuzeboc
+
 1.0.0 (2018-07-11)
 ------------------
 * doc(bb_bringup): set BSD license

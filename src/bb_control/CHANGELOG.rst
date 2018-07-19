@@ -2,6 +2,11 @@
 Changelog for package bb_control
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* feat(bb_control): add install instructions
+* Contributors: Guillaume Beuzeboc
+
 1.0.0 (2018-07-11)
 ------------------
 * doc(bb_control): set BSD license

@@ -2,6 +2,11 @@
 Changelog for package bb_serial
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* fix(bb_serial): c++11 kinetic
+* Contributors: Guillaume Beuzeboc
+
 1.0.0 (2018-07-11)
 ------------------
 * doc(bb_serial): set BSD license

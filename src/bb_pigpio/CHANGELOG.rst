@@ -2,6 +2,11 @@
 Changelog for package bb_pigpio
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* feat(bb_pigpio): add install instructions
+* Contributors: Guillaume Beuzeboc
+
 1.0.0 (2018-07-11)
 ------------------
 * feat(bb_pigpio): add pigpio killer
