@@ -37,8 +37,9 @@
 *.catkin_workspace
 
 #ROS
-build/
-devel/
-install/
+build*/
+devel*/
+install*/
+log*/
 .vscode/
-
+.catkin*/

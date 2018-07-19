@@ -1,5 +1,5 @@
 <launch>
-  <node name="bb_pigpio_node" pkg="bb_pigpio" type="bb_pigpio_node" launch-prefix="sudo -E">
+  <node name="bb_pigpio_node" pkg="bb_pigpio" type="bb_pigpio_node" launch-prefix="sudo -E LD_LIBRARY_PATH=$(optenv LD_LIBRARY_PATH)">
     <rosparam command="load" file="$(find bb_pigpio)/config/bb_encoder.yaml" />
   </node>
   <!-- bb_pigpio killer-->
