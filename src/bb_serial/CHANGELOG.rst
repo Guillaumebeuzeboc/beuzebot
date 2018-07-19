@@ -2,8 +2,8 @@
 Changelog for package bb_serial
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.1 (2018-07-19)
+------------------
 * fix(bb_serial): c++11 kinetic
 * Contributors: Guillaume Beuzeboc
 

@@ -2,8 +2,8 @@
 Changelog for package bb_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.1 (2018-07-19)
+------------------
 * feat(bb_bringup): add install instructions
 * Contributors: Guillaume Beuzeboc
 

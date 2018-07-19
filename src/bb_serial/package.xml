@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>bb_serial</name>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <description>The bb_serial package</description>
 
   <maintainer email="guillaume.beuzeboc@gmail.com">guillaumeBeuzeboc</maintainer>
