@@ -12,4 +12,6 @@
   <!-- robot control -->
   <include file="$(find bb_control)/launch/control.launch" />
 
+  <!-- RDGB camera -->
+  <include file="$(find openni2_launch)/launch/openni2.launch" />
 </launch>
