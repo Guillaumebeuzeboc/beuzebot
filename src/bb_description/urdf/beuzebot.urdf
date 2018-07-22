@@ -2,7 +2,7 @@
 
 
   <xacro:property name="PI" value="3.1415926535897931" />
-  <xacro:property name="BASE_LINK_WIDTH" value="0.1465" />
+  <xacro:property name="BASE_LINK_WIDTH" value="0.375" />
   <xacro:property name="BASE_LINK_HEIGHT" value="0.205" />
   <xacro:property name="BASE_LINK_DEPTH" value="0.595" />
 
