@@ -27,6 +27,16 @@
   <xacro:property name="CASTER_PART_TO_CASTER_WHEEL_Y" value="-0.024" />
   <xacro:property name="CASTER_PART_TO_CASTER_WHEEL_Z" value="-0.036" />
 
+  <xacro:property name="BASE_LINK_TO_CAMERA_X" value="0.0" />
+  <xacro:property name="BASE_LINK_TO_CAMERA_Y" value="0.25" />
+  <xacro:property name="BASE_LINK_TO_CAMERA_Z" value="0.07" />
+
+  <xacro:property name="BASE_LINK_TO_CAMERA_ROLL" value="0.0" />
+  <xacro:property name="BASE_LINK_TO_CAMERA_PITCH" value="0.0" />
+  <xacro:property name="BASE_LINK_TO_CAMERA_YAW" value="${PI/2}" />
+
+  <xacro:arg name="tf_camera" default="true"/>
+
   <material name="green">
     <color rgba="0 255 0 1"/>
   </material>
@@ -117,5 +127,15 @@
     <axis xyz="0 0 1" />
     <origin xyz="${CASTER_PART_TO_CASTER_WHEEL_X} ${CASTER_PART_TO_CASTER_WHEEL_Y} ${CASTER_PART_TO_CASTER_WHEEL_Z}" rpy="0 ${PI/2} 0"/>
   </joint>
+
+  <link name="camera_link"/>
+
+  <xacro:if value="$(arg tf_camera)">
+      <joint name="base_link_to_camera" type="fixed">
+        <parent link="base_link"/>
+        <child link="camera_link"/>
+        <origin xyz="${BASE_LINK_TO_CAMERA_X} ${BASE_LINK_TO_CAMERA_Y} ${BASE_LINK_TO_CAMERA_Z}" rpy="${BASE_LINK_TO_CAMERA_ROLL} ${BASE_LINK_TO_CAMERA_PITCH} ${BASE_LINK_TO_CAMERA_YAW}"/>
+      </joint>
+  </xacro:if>
 
 </robot>
