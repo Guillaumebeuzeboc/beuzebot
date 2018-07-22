@@ -1,8 +1,19 @@
 <launch>
-    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find bb_description)/urdf/beuzebot.urdf" />
+    <arg name="tf_camera" default="true" />
+
+    <!--param name="robot_description" command="$(find xacro)/xacro --><!--inorder '$(find bb_description)/urdf/beuzebot.urdf' tf_camera:=${arg tf_camera}"/-->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder
+                       '$(find bb_description)/urdf/beuzebot.urdf'
+                       tf_camera:=$(arg tf_camera)"/>
+
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="/use_gui" value="false"/>
+        <rosparam param="/source_list">["/joint_states_hw"]</rosparam>
+    </node>
+
 
     <node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher">
-	<remap from="/joint_states" to="/joint_states_hw" />
+	<!--remap from="/joint_states" to="/joint_states_hw" /-->
     </node>
 
 </launch>
