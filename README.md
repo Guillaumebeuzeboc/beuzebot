@@ -20,6 +20,7 @@ Hardware description
 * [Sabertooth motor controller](https://www.dimensionengineering.com/datasheets/Sabertooth2x25v2.pdf)
 * [2x Motors + encoders](https://www.pololu.com/product/2822)
 * [2x wheels](https://www.robotshop.com/eu/fr/roues-noir-90-10mm-pololu-paire.html)
+* Xtion camera (RGB-D)
 * One caster wheel
 * 8 resistors for voltage divider bridge
 * Some aluminum profiles

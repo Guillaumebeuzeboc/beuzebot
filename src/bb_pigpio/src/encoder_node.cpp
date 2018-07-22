@@ -46,7 +46,7 @@ int main(int argc, char** argv) {
         ros::spinOnce();
         encoder_left.update();
         encoder_right.update();
-        if((ros::Time::now() - last_msg) > ros::Duration(1)){
+        if((ros::Time::now() - last_msg) > ros::Duration(3)){
           alive = false;
         }
         rate.sleep();
