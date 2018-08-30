@@ -6,8 +6,8 @@
   <xacro:property name="BASE_LINK_HEIGHT" value="0.205" />
   <xacro:property name="BASE_LINK_DEPTH" value="0.595" />
 
-  <xacro:property name="BASE_LINK_TO_WHEEL_X" value="${BASE_LINK_WIDTH/2 - 0.0152}" />
-  <xacro:property name="BASE_LINK_TO_WHEEL_Y" value="${BASE_LINK_DEPTH/2 - 0.02476}" />
+  <xacro:property name="BASE_LINK_TO_WHEEL_X" value="${BASE_LINK_DEPTH/2 - 0.02476}" />
+  <xacro:property name="BASE_LINK_TO_WHEEL_Y" value="${BASE_LINK_WIDTH/2 - 0.0152}" />
   <xacro:property name="BASE_LINK_TO_WHEEL_Z" value="${-BASE_LINK_HEIGHT/2 + 0.0105}" />
 
   <xacro:property name="WHEEL_LENGTH" value="0.01" />
@@ -16,24 +16,24 @@
   <xacro:property name="CASTER_PART_LENGTH" value="0.001" />
   <xacro:property name="CASTER_PART_RADIUS" value="0.045" />
 
-  <xacro:property name="BASE_LINK_TO_CASTER_PART_X" value="0.0" />
-  <xacro:property name="BASE_LINK_TO_CASTER_PART_Y" value="${-BASE_LINK_DEPTH/2 - 0.05}" />
+  <xacro:property name="BASE_LINK_TO_CASTER_PART_X" value="${-BASE_LINK_DEPTH/2 - 0.05}" />
+  <xacro:property name="BASE_LINK_TO_CASTER_PART_Y" value="0.0" />
   <xacro:property name="BASE_LINK_TO_CASTER_PART_Z" value="${-BASE_LINK_HEIGHT/2 + 0.03}" />
 
   <xacro:property name="CASTER_WHEEL_LENGTH" value="0.016" />
   <xacro:property name="CASTER_WHEEL_RADIUS" value="0.025" />
 
-  <xacro:property name="CASTER_PART_TO_CASTER_WHEEL_X" value="0.0" />
-  <xacro:property name="CASTER_PART_TO_CASTER_WHEEL_Y" value="-0.024" />
+  <xacro:property name="CASTER_PART_TO_CASTER_WHEEL_X" value="-0.024" />
+  <xacro:property name="CASTER_PART_TO_CASTER_WHEEL_Y" value="0.0" />
   <xacro:property name="CASTER_PART_TO_CASTER_WHEEL_Z" value="-0.036" />
 
-  <xacro:property name="BASE_LINK_TO_CAMERA_X" value="0.0" />
-  <xacro:property name="BASE_LINK_TO_CAMERA_Y" value="0.25" />
+  <xacro:property name="BASE_LINK_TO_CAMERA_X" value="0.25" />
+  <xacro:property name="BASE_LINK_TO_CAMERA_Y" value="0.0" />
   <xacro:property name="BASE_LINK_TO_CAMERA_Z" value="0.07" />
 
   <xacro:property name="BASE_LINK_TO_CAMERA_ROLL" value="0.0" />
   <xacro:property name="BASE_LINK_TO_CAMERA_PITCH" value="0.0" />
-  <xacro:property name="BASE_LINK_TO_CAMERA_YAW" value="${PI/2}" />
+  <xacro:property name="BASE_LINK_TO_CAMERA_YAW" value="0" />
 
   <xacro:arg name="tf_camera" default="true"/>
 
@@ -51,7 +51,7 @@
   <link name="base_link">
     <visual>
       <geometry>
-        <box size="${BASE_LINK_WIDTH} ${BASE_LINK_DEPTH} ${BASE_LINK_HEIGHT} "/>
+        <box size="${BASE_LINK_DEPTH} ${BASE_LINK_WIDTH} ${BASE_LINK_HEIGHT} "/>
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0.0"/>
       <material name="green"/>
@@ -64,7 +64,7 @@
       <geometry>
         <cylinder length="${WHEEL_LENGTH}" radius="${WHEEL_RADIUS}"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="${PI/2} 0 0" xyz="0 0 0"/>
       <material name="orange"/>
     </visual>
   </link>
@@ -72,8 +72,8 @@
   <joint name="base_to_lwheel" type="continuous">
     <parent link="base_link"/>
     <child link="lwheel"/>
-    <axis xyz="0 0 1" />
-    <origin xyz="${BASE_LINK_TO_WHEEL_X} ${BASE_LINK_TO_WHEEL_Y} ${BASE_LINK_TO_WHEEL_Z}" rpy="0 ${PI/2} 0"/>
+    <axis xyz="0 1 0" />
+    <origin xyz="${BASE_LINK_TO_WHEEL_X} ${BASE_LINK_TO_WHEEL_Y} ${BASE_LINK_TO_WHEEL_Z}" rpy="0 0 0"/>
   </joint>
 
   <link name="rwheel">
@@ -81,7 +81,7 @@
       <geometry>
         <cylinder length="${WHEEL_LENGTH}" radius="${WHEEL_RADIUS}"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="${PI/2} 0 0" xyz="0 0 0"/>
       <material name="orange"/>
     </visual>
   </link>
@@ -89,8 +89,8 @@
   <joint name="base_to_rwheel" type="continuous">
     <parent link="base_link"/>
     <child link="rwheel"/>
-    <axis xyz="0 0 1" />
-    <origin xyz="${-BASE_LINK_TO_WHEEL_X - WHEEL_LENGTH/2} ${BASE_LINK_TO_WHEEL_Y} ${BASE_LINK_TO_WHEEL_Z}" rpy="0 ${PI/2} 0"/>
+    <axis xyz="0 1 0" />
+    <origin xyz="${BASE_LINK_TO_WHEEL_X} ${-BASE_LINK_TO_WHEEL_Y - WHEEL_LENGTH/2} ${BASE_LINK_TO_WHEEL_Z}" rpy="0 0 0"/>
   </joint>
 
   <link name="caster_part">
@@ -116,7 +116,7 @@
       <geometry>
         <cylinder length="${CASTER_WHEEL_LENGTH}" radius="${CASTER_WHEEL_RADIUS}"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="${PI/2} 0 0" xyz="0 0 0"/>
       <material name="blue"/>
     </visual>
   </link>
@@ -124,8 +124,8 @@
   <joint name="caster_part_to_caster_wheel" type="continuous">
     <parent link="caster_part"/>
     <child link="caster_wheel"/>
-    <axis xyz="0 0 1" />
-    <origin xyz="${CASTER_PART_TO_CASTER_WHEEL_X} ${CASTER_PART_TO_CASTER_WHEEL_Y} ${CASTER_PART_TO_CASTER_WHEEL_Z}" rpy="0 ${PI/2} 0"/>
+    <axis xyz="0 1 0" />
+    <origin xyz="${CASTER_PART_TO_CASTER_WHEEL_X} ${CASTER_PART_TO_CASTER_WHEEL_Y} ${CASTER_PART_TO_CASTER_WHEEL_Z}" rpy="0 0 0"/>
   </joint>
 
   <link name="camera_link"/>
