@@ -47,6 +47,16 @@
     <color rgba="0 0 255 1"/>
   </material>
 
+  <link name="middle_wheel">
+  </link>
+
+  <joint name="middle_wheel_to_base" type="continuous">
+    <parent link="middle_wheel"/>
+    <child link="base_link"/>
+    <axis xyz="0 1 0" />
+    <origin xyz="-${BASE_LINK_TO_WHEEL_X} 0 ${BASE_LINK_TO_WHEEL_Z}" rpy="0 0 0"/>
+  </joint>
+
 
   <link name="base_link">
     <visual>
