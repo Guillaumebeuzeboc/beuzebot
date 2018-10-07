@@ -27,12 +27,12 @@
   <xacro:property name="CASTER_PART_TO_CASTER_WHEEL_Y" value="0.0" />
   <xacro:property name="CASTER_PART_TO_CASTER_WHEEL_Z" value="-0.036" />
 
-  <xacro:property name="BASE_LINK_TO_CAMERA_X" value="0.25" />
-  <xacro:property name="BASE_LINK_TO_CAMERA_Y" value="0.0" />
-  <xacro:property name="BASE_LINK_TO_CAMERA_Z" value="0.07" />
+  <xacro:property name="BASE_LINK_TO_CAMERA_X" value="0.2585" />
+  <xacro:property name="BASE_LINK_TO_CAMERA_Y" value="0.068" />
+  <xacro:property name="BASE_LINK_TO_CAMERA_Z" value="0.068" />
 
-  <xacro:property name="BASE_LINK_TO_CAMERA_ROLL" value="0.0" />
-  <xacro:property name="BASE_LINK_TO_CAMERA_PITCH" value="0.0" />
+  <xacro:property name="BASE_LINK_TO_CAMERA_ROLL" value="-0.080" />
+  <xacro:property name="BASE_LINK_TO_CAMERA_PITCH" value="0.010" />
   <xacro:property name="BASE_LINK_TO_CAMERA_YAW" value="0" />
 
   <material name="green">
