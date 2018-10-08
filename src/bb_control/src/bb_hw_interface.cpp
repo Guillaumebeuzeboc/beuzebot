@@ -41,7 +41,8 @@ void BBHWInterface::read(ros::Duration &elapsed_time)
   for (std::size_t joint_id = 0; joint_id < num_joints_; ++joint_id){
     previous_measured_position[joint_id] = joint_position_[joint_id];
     const double normalized_angle = angles::normalize_angle(measured_position[joint_id]);
-    joint_position_[joint_id] = normalized_angle;
+    //joint_position_[joint_id] = normalized_angle;
+    joint_position_[joint_id] = measured_position[joint_id]; // diff_drive_controller is not normalizing angles after computing the diff ...
     joint_velocity_[joint_id] = angles::normalize_angle(normalized_angle - previous_measured_position[joint_id]) / elapsed_time.toSec();
 
   }
