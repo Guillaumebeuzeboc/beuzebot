@@ -1,10 +1,11 @@
 # Set the base image
 FROM ros:kinetic-ros-core
 
-MAINTAINER guillaume beuzeboc <guillaume.beuzeboc@gmail.com> 
+MAINTAINER guillaume beuzeboc <guillaume.beuzeboc@gmail.com>
 
 
 RUN apt-get update
+RUN apt-get upgrade -y
 RUN apt-get install -y wget \
                        g++ \
                        cmake \

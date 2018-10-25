@@ -1,0 +1,53 @@
+# Set the base image
+FROM hbrobotics/ros-base:rpi3
+
+COPY ./qemu-arm-static /usr/bin/qemu-arm-static
+
+MAINTAINER guillaume beuzeboc <guillaume.beuzeboc@gmail.com>
+
+
+RUN apt-get update
+RUN apt-get install -y ninja-build
+#RUN apt-get install -y wget \
+#                       g++ \
+#                       cmake \
+#                       unzip \
+#                       libgflags-dev
+#
+#RUN apt-get install -y ros-kinetic-hardware-interface \
+#                       ros-kinetic-controller-manager \
+#                       ros-kinetic-control-msgs \
+#                       ros-kinetic-actionlib \
+#                       ros-kinetic-urdf \
+#                       ros-kinetic-joint-limits-interface \
+#                       ros-kinetic-transmission-interface \
+#                       ros-kinetic-control-toolbox \
+#                       ros-kinetic-angles \
+#                       ros-kinetic-rosparam-shortcuts
+#
+## install pigpio
+#RUN wget -P /tmp/ abyz.co.uk/rpi/pigpio/pigpio.zip
+#RUN cd /tmp; unzip pigpio.zip
+#RUN cd /tmp/PIGPIO; make; make install
+#
+##depends ws
+#RUN mkdir -p /root/ros_depends/src
+#RUN git clone --branch 0.4.1 https://github.com/Guillaumebeuzeboc/ros_control_boilerplate.git /root/ros_depends/src/ros_control_boilerplate
+#RUN /bin/bash -c "source /opt/ros/kinetic/setup.bash; cd /root/ros_depends; catkin_make install -j1 -DCMAKE_BUILD_TYPE=Release"
+#
+#install ws
+RUN mkdir -p /root/ws
+RUN wstool init src
+RUN /bin/bash -c "source /opt/ros/kinetic/setup.bash; cd /root/ws; wstool init src; wstool merge -t src https://raw.githubusercontent.com/googlecartographer/cartographer_turtlebot/master/cartographer_turtlebot.rosinstall"
+RUN /bin/bash -c "source /opt/ros/kinetic/setup.bash; cd /root/ws; wstool update -t src"
+RUN rosdep init
+RUN rosdep update
+RUN /bin/bash -c "git clone https://github.com/google/protobuf.git; cd protobuf; git checkout tags/v3.4.1; mkdir build; cd build; cmake -G Ninja -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release -Dprotobuf_BUILD_TESTS=OFF ../cmake; ninja; ninja install"
+
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN /bin/bash -c "source /opt/ros/kinetic/setup.bash; cd /root/ws; rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y; catkin_make_isolated --install --use-ninja"
+RUN source /root/ws/install_isolated/setup.bash
+
+# Copy and run code
+#COPY src/ /root/ws/src
