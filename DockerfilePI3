@@ -46,6 +46,7 @@ RUN /bin/bash -c "git clone https://github.com/google/protobuf.git; cd protobuf;
 
 RUN apt-get update
 RUN apt-get upgrade -y
+RUN echo "The raspberry pi 3 doesn't have enought RAM memory for this step. An easy workaround is to add a swap partition (temporary)"
 RUN /bin/bash -c "source /opt/ros/kinetic/setup.bash; cd /root/ws; rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y; catkin_make_isolated --install --use-ninja"
 RUN source /root/ws/install_isolated/setup.bash
 
