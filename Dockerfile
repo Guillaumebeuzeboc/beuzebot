@@ -20,7 +20,8 @@ RUN apt-get install -y ros-kinetic-hardware-interface \
                        ros-kinetic-transmission-interface \
                        ros-kinetic-control-toolbox \
                        ros-kinetic-angles \
-                       ros-kinetic-rosparam-shortcuts
+                       ros-kinetic-rosparam-shortcuts \
+                       ros-kinetic-cartographer-ros
 
 # install pigpio
 RUN wget -P /tmp/ abyz.co.uk/rpi/pigpio/pigpio.zip
