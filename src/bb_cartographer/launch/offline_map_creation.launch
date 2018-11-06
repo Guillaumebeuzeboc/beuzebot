@@ -1,0 +1,28 @@
+<launch>
+
+  <param name="/use_sim_time" value="true" />
+
+  <node name="cartographer_node" pkg="cartographer_ros"
+      type="cartographer_node" args="
+          -configuration_directory
+              $(find bb_cartographer)/config
+          -configuration_basename camera_2d.lua"
+      output="screen">
+    <remap from="/odom" to="/mobile_base_controller/odom" />
+  </node>
+
+  <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
+      type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
+
+  <node name="squash_depth_camera" pkg="depthimage_to_laserscan"
+      type="depthimage_to_laserscan">
+    <remap from="image" to="/camera/depth/image_raw" />
+  </node>
+
+  <node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(find cartographer_turtlebot
+          )/rviz/map_creation.rviz" />
+  <node name="playbag" pkg="rosbag" type="play"
+      args="--clock $(arg bag_filename)" />
+
+</launch>

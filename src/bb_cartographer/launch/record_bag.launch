@@ -1,0 +1,15 @@
+<launch>
+
+  <node name="map_recorder" pkg="rosbag"
+      type="record" args="
+      --topic /mobile_base_controller/odom
+              /scan
+              /tf"
+      output="screen">
+  </node>
+
+  <node name="squash_depth_camera" pkg="depthimage_to_laserscan"
+      type="depthimage_to_laserscan">
+      <remap from="image" to="/camera/depth/image_raw" />
+  </node>
+</launch>
