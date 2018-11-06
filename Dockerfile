@@ -22,7 +22,8 @@ RUN apt-get install -y ros-kinetic-hardware-interface \
                        ros-kinetic-angles \
                        ros-kinetic-rosparam-shortcuts \
                        ros-kinetic-cartographer-ros \
-                       ros-kinetic-depthimage-to-laserscan
+                       ros-kinetic-depthimage-to-laserscan \
+                       ros-kinetic-openni2-launch
 
 # install pigpio
 RUN wget -P /tmp/ abyz.co.uk/rpi/pigpio/pigpio.zip
