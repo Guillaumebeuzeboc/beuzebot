@@ -1,0 +1,6 @@
+<launch>
+
+  <node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(find bb_cartographer
+          )/rviz/map_creation.rviz" />
+</launch>

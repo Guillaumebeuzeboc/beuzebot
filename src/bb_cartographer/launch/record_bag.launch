@@ -4,7 +4,11 @@
       type="record" args="
       --topic /mobile_base_controller/odom
               /scan
-              /tf"
+              /tf
+              /tf_static
+	      /joint_states
+              /joint_states_hw
+              /tf_static_agg"
       output="screen">
   </node>
 
@@ -12,4 +16,7 @@
       type="depthimage_to_laserscan">
       <remap from="image" to="/camera/depth/image_raw" />
   </node>
+
+<!-- I should write a node that aggregate tf_static data into another topic -->
+<!-- and subscribe to this new topic instead of tf_static, then remate this topic into tf_static when playing the rosbag  -->
 </launch>

@@ -14,4 +14,5 @@
 
   <!-- RDGB camera -->
   <include file="$(find openni2_launch)/launch/openni2.launch" />
+  <param name="/camera/driver/data_skip" type="int" value="2" />
 </launch>
