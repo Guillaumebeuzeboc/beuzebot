@@ -5,18 +5,10 @@
       --topic /mobile_base_controller/odom
               /scan
               /tf
-              /tf_static
-	      /joint_states
-              /joint_states_hw
-              /tf_static_agg"
+              /tf_static_aggregated"
       output="screen">
   </node>
 
-  <node name="squash_depth_camera" pkg="depthimage_to_laserscan"
-      type="depthimage_to_laserscan">
-      <remap from="image" to="/camera/depth/image_raw" />
-  </node>
+  <node name="tf_static_aggregator" pkg="tf_static_aggregator" type="TfStaticAggregator.py" />
 
-<!-- I should write a node that aggregate tf_static data into another topic -->
-<!-- and subscribe to this new topic instead of tf_static, then remate this topic into tf_static when playing the rosbag  -->
 </launch>
