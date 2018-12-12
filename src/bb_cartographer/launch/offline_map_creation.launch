@@ -21,18 +21,9 @@
     <remap from="image" to="/camera/depth/image_raw" />
   </node>
 
-     <param name="robot_description" command="$(find xacro)/xacro --inorder
-     '$(find bb_description)/urdf/beuzebot.urdf'"/>
-
-    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-        <param name="/use_gui" value="false"/>
-        <rosparam param="/source_list">["/joint_states_hw"]</rosparam>
-    </node>
-
-
-    <node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher">
-    </node>
   <node name="playbag" pkg="rosbag" type="play"
-      args="--clock $(arg bag_filename)" />
+      args="--clock $(arg bag_filename)" >
+      <remap from="/tf_static_aggregated" to="/tf_static"/>
+  </node>
 
 </launch>
